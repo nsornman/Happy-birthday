@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <audio id="bg-music" loop autoplay>
+    <audio id="bg-music" loop>
         <source src="กลนดอกไม - Newery [Official Audio].mp3" type="audio/mpeg">
     </audio>
     <div class="heart-background" id="heart-background"></div>
@@ -58,8 +58,15 @@
             }, 270);// สร้างหัวใจทุกๆ 270 มิลลิวินาที
         }
         createContinuousHearts();
+        function handlePlayMusic() {
+            bgMusic.play().then(() => {
+                console.log("Music is playing now");
+            }).catch(error => {
+                console.log("Playback failed: ", error);
+            });
+        }
         giftBox.addEventListener('click', () => {
-            playMusic(); 
+            handlePlayMusic();
             setTimeout(() => {
                 introSection.classList.add('hidden');
                 mainContent.style.display = 'block';
